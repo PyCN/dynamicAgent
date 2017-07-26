@@ -1,0 +1,30 @@
+exitTH=/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+Log=/var/log/pppoe.log
+sed -i '/^gateway/d' /etc/network/interfaces
+sed -i '/^dns-nameservers/d' /etc/network/interfaces
+
+echo "del ifcfg-eth0 Gateway  ...... Success" >  $Log
+echo "del ifcfg-eth0 DNS     ...... Success" >>  $Log
+###删除网关、DNS
+read -p "请输入ADSL帐号:" id
+read -p "请输入ADSL密码:" ps
+
+sed -i 's/root/'$id'/g' /etc/ppp/chap-secrets
+sed -i 's/12345/'$ps'/g' /etc/ppp/chap-secrets
+
+echo "MOdify chap-secrets    ...... Success" >>$Log
+
+sed -i 's/root/'$id'/g' /etc/ppp/pap-secrets
+sed -i 's/12345/'$ps'/g' /etc/ppp/pap-secrets
+
+echo "Modify pap-secrets     ......Success" >>$Log
+
+#####################################################################
+sed -i 's/root/'$id'/g' /etc/ppp/pppoe.conf
+
+echo "Modify /etc/ppp/pppoe.conf      ......Success" >>$Log
+
+cat $Log
+ifdown eth0
+ifup eth0
+rm -rf /root/ppp.sh
