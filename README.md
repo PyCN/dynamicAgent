@@ -140,10 +140,9 @@ ADSL Start, Please wait
 ADSL Successfully
 ('New IP', '172.247.109.130')
 ('Successfully Sent to Server ', 'http://173.82.80.40:8000/api/store')
+# 测试 ok， 先 ctr+c 终止， 然后开启后台运行
+root@cloud:~/dynamicAgent/client# nohup python run.py &
 ```
-
-> 项目github:  https://github.com/Zhiwei1996/dynamicAgent
-> reference: http://cuiqingcai.com/3443.html
 
 ---------------
 有 bug 请不要联系我 noparking188@hmail.com
