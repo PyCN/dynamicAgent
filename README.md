@@ -11,6 +11,11 @@ $ cd aynamicAgent/server
 $ gunicorn -w 2 -b 0.0.0.0:8000 app:run -D
 # 0.0.0.0:8000 是对外暴露的 api 接口，host:port 格式
 ```
+ipdatbles 防火墙配置，增加 api 中的端口对外开放
+```bash
+$ iptables -F  # 懒癌患者
+# 注：请务必加强网络安全意识，查阅运维手册正确配置您的防火墙
+```
 测试 api 接口是否可用，随便另一台机器，你的本机即可
 ```bash
 # 修改 oneproxy.py 中的 api 接口
