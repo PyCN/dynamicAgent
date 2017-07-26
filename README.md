@@ -11,9 +11,11 @@ $ cd aynamicAgent/server
 $ gunicorn -w 2 -b 0.0.0.0:8000 app:run -D
 # 0.0.0.0:8000 是对外暴露的 api 接口，host:port 格式
 ```
-测试 api 接口是否可用
-随便另一台机器，你的本机即可
+测试 api 接口是否可用，随便另一台机器，你的本机即可
 ```bash
+# 修改 oneproxy.py 中的 api 接口
+$ vi oneproxy.py
+api = 'http://192.168.31.130:8008/api/get' # 你知道怎么改的
 $ ./oneproxy.py
 {u'status': 0, u'msg': u'ok', u'proxy': u'192.168.31.203:6578'}
 # 返回响应，ok
@@ -135,9 +137,8 @@ ADSL Successfully
 ('Successfully Sent to Server ', 'http://173.82.80.40:8000/api/store')
 ```
 
-**github:**  https://github.com/Zhiwei1996/dynamicAgent
-
----------------
+> 项目github:  https://github.com/Zhiwei1996/dynamicAgent
 > reference: http://cuiqingcai.com/3443.html
 
-
+---------------
+有 bug 请不要联系我 noparking188@hmail.com
